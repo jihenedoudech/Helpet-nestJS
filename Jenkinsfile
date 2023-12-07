@@ -41,7 +41,7 @@ pipeline {
         stage('Checkout Nest.js App') {
             steps {
                 echo "__pulling from git__"
-                git url: 'https://github.com/jihenedoudech/Helpet-nestJS.git', branch: 'master', credentialsId: 'your_git_credentials_id'
+                git url: 'https://github.com/jihenedoudech/Helpet-nestJS.git', branch: 'master'
             }
         }
 
