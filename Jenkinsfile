@@ -33,6 +33,9 @@ pipeline {
         stage('Build and Push React Docker Image') {
             steps {
                 script {
+                    sh 'npm config set fetch-retry-mintimeout 200000'
+                    sh 'npm config set fetch-retry-maxtimeout 1200000'
+                    sh 'npm config ls -l'
                     sh "docker build -t ${HELPET_FRONT}:${TAG} ."
                     sh "docker login -u ${DOCKERHUB_USERNAME} -p ${DOCKERHUB_PASSWORD}"
                     sh "docker tag ${HELPET_FRONT}:${TAG} ${DOCKERHUB_USERNAME}/${HELPET_FRONT}:${TAG}"
