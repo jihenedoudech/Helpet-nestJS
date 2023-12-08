@@ -4,7 +4,8 @@ pipeline {
     environment {
         HELPET_FRONT = "helpet-front"
         HELPET_BACK = "helpet-back"
-        DOCKERHUB_USERNAME = credentials('jihen546')
+        DOCKERHUB_USERNAME = "jihen546"
+        DOCKERHUB_PASSWORD = "jihene123"
         TAG = "latest"
     }
 
@@ -56,12 +57,9 @@ pipeline {
             steps {
                 echo "__building and pushing docker image__"
                 sh "docker build -t ${HELPET_BACK}:${TAG} ."
-                docker.withRegistry('https://registry.hub.docker.com', 'dockerhub_id') {
-                    // docker.image("${DOCKER_HUB_USERNAME}/${DOCKER_IMAGE_NAME}:${TAG}").push()
-                    sh "docker tag ${HELPET_BACK}:${TAG} ${DOCKERHUB_USERNAME}/${HELPET_BACK}:${TAG}"
-                    sh "docker push ${DOCKERHUB_USERNAME}/${HELPET_BACK}:${TAG}"
-                }
-                // sh "docker login -u ${DOCKERHUB_USERNAME} -p ${DOCKERHUB_PASSWORD}"
+                sh "docker login -u ${DOCKERHUB_USERNAME} -p ${DOCKERHUB_PASSWORD}"
+                sh "docker tag ${HELPET_BACK}:${TAG} ${DOCKERHUB_USERNAME}/${HELPET_BACK}:${TAG}"
+                sh "docker push ${DOCKERHUB_USERNAME}/${HELPET_BACK}:${TAG}"
             }
         }
     }
