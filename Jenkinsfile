@@ -8,6 +8,9 @@ pipeline {
         DOCKERHUB_PASSWORD = "jihene123"
         TAG = "latest"
     }
+    tools { 
+        nodejs "node-16"
+    }
 
     stages {
         /* stage('Checkout React App') {
