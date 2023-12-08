@@ -13,7 +13,7 @@ pipeline {
     }
 
     stages {
-        /* stage('Checkout React App') {
+        stage('Checkout React App') {
             steps {
                 script {
                     git url: 'https://github.com/jihenedoudech/Helpet-React.git', branch: 'master'
@@ -21,14 +21,14 @@ pipeline {
             }
         }
 
-        stage('Test React App') {
+        /* stage('Test React App') {
             steps {
                 script {
                     sh 'npm install'
                     sh 'npm test'
                 }
             }
-        }
+        } */
 
         stage('Build and Push React Docker Image') {
             steps {
@@ -39,7 +39,7 @@ pipeline {
                     sh "docker push ${DOCKERHUB_USERNAME}/${HELPET_FRONT}:${TAG}"
                 }
             }
-        } */
+        }
 
         stage('Checkout Nest.js App') {
             steps {
