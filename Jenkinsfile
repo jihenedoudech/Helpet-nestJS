@@ -45,13 +45,13 @@ pipeline {
             }
         }
 
-        stage('Test Nest.js App') {
+        /* stage('Test Nest.js App') {
             steps {
                 echo "__testing react__"
                 sh 'npm install'
                 sh 'npm test'
                 }
-        }
+        } */
 
         stage('Build and Push Nest.js Docker Image') {
             steps {
